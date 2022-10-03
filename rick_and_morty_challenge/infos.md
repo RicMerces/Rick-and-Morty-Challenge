@@ -1,0 +1,1 @@
+<a href="https://rickandmortyapi.com/documentation/>api</a>
