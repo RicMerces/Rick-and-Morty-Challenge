@@ -11,7 +11,7 @@ void main() async {
       characterListDto.results!.map((character) => character.name).join(', '));
 
   final characterDto = await rickAndMortyApiClient.getCharacter(numero: 1);
-  debugPrint(characterDto.name.toString());
+  debugPrint(characterDto.id.toString());
 
   runApp(
     const MaterialApp(
