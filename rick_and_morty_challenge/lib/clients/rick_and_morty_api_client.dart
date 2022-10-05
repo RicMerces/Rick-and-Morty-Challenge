@@ -16,9 +16,6 @@ class RickAndMortyApiClient {
   final http.Client _httpClient;
 
   Future<CharacterListDto> getCharacterList() async {
-    // {required int offset}
-    // {'offset': offset.toString()}
-
     final characterListUri = Uri.https(
       _baseUrl,
       _basePath,

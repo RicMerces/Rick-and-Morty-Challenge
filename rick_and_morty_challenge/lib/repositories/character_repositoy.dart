@@ -10,10 +10,20 @@ class CharacterRepository {
     final CharacterListDto = await _rmApiClient.getCharacterList();
     final characters = <Character>[];
     for (final characterListResult in CharacterListDto.results!) {
-      final characterNumber = characterListResult.id;
       final characterDto = await _rmApiClient.getCharacter(
         numero: int.parse(
           characterListResult.id.toString(),
+        ),
+      );
+
+      characters.add(
+        Character(
+          id: characterDto.id,
+          name: characterDto.name,
+          url: characterDto.url,
+          gender: characterDto.gender,
+          image: characterDto.image,
+          species: characterDto.species,
         ),
       );
     }

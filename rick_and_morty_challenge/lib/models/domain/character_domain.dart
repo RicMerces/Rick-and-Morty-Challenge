@@ -14,4 +14,8 @@ class Character {
   final String? gender;
   final String? image;
   final String? url;
+
+  @override
+  String toString() =>
+      '======================\nCharacter $id : $name \nSpecie: $species\nGender: $gender\nImage url: $image\nUrl: $url\n';
 }
