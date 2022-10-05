@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty_challenge/models/domain/character_domain.dart';
 
 class CharacterContainer extends StatelessWidget {
-  const CharacterContainer({Key? key}) : super(key: key);
+  const CharacterContainer({
+    Key? key,
+    required this.character,
+  }) : super(key: key);
 
+  final Character character;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,23 +21,22 @@ class CharacterContainer extends StatelessWidget {
       width: 250,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
+        children: [
           CircleAvatar(
             radius: 90,
-            backgroundImage: NetworkImage(
-                'https://rickandmortyapi.com/api/character/avatar/1.jpeg'),
+            backgroundImage: NetworkImage(character.image.toString()),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(
-            'Rick Sanchez',
-            style: TextStyle(
+            character.name.toString(),
+            style: const TextStyle(
                 fontSize: 16, color: Colors.white, fontWeight: FontWeight.w900),
           ),
           Text(
-            'Human',
-            style: TextStyle(
+            character.species.toString(),
+            style: const TextStyle(
               fontSize: 16,
               color: Colors.white,
             ),

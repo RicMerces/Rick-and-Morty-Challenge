@@ -8,21 +8,24 @@ void main() async {
   final rickAndMortyApiClient = RickAndMortyApiClient(http.Client());
   final characterRepository = CharacterRepository(rickAndMortyApiClient);
 
-  final characters = await characterRepository.getCharacters();
-  debugPrint(characters.toString());
   runApp(
-    const MaterialApp(
-      home: MyApp(),
+    MaterialApp(
+      home: MyApp(characterRepository: characterRepository),
       debugShowCheckedModeBanner: false,
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  const MyApp({
+    Key? key,
+    required this.characterRepository,
+  }) : super(key: key);
+  final CharacterRepository characterRepository;
   @override
   Widget build(BuildContext context) {
-    return const FirstPage();
+    return FirstPage(
+      characterRepository: characterRepository,
+    );
   }
 }
