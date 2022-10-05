@@ -9,9 +9,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xff181A20),
       appBar: AppBar(
-        iconTheme: const IconThemeData(
-          color: Color(0xffA2CF2A),
-        ),
+        automaticallyImplyLeading: false,
         backgroundColor: const Color(0xff181A20),
         title: const Text(
           'Personagens',
@@ -24,6 +22,7 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView.builder(
         itemBuilder: (context, index) => const CharacterContainer(),
+        itemCount: 7,
       ),
     );
   }
