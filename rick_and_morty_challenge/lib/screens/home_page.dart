@@ -31,11 +31,13 @@ class HomePage extends StatelessWidget {
                 centerTitle: true,
                 elevation: 0,
               ),
-              body: ListView.builder(
-                itemBuilder: (context, index) => CharacterContainer(
-                  character: state.characters[index],
+              body: NotificationListener<ScrollNotification>(
+                child: ListView.builder(
+                  itemBuilder: (context, index) => CharacterContainer(
+                    character: state.characters[index],
+                  ),
+                  itemCount: state.characters.length,
                 ),
-                itemCount: state.characters.length,
               ),
             );
 
