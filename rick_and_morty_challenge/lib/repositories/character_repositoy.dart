@@ -1,13 +1,15 @@
-import 'package:rick_and_morty_challenge/clients/rick_and_morty_api_client.dart';
 import 'package:rick_and_morty_challenge/models/domain/character_domain.dart';
+import 'package:rick_and_morty_challenge/service/rick_and_morty_api_client.dart';
 
 class CharacterRepository {
   const CharacterRepository(this._rmApiClient);
 
   final RickAndMortyApiClient _rmApiClient;
 
-  Future<List<Character>> getCharacters() async {
-    final CharacterListDto = await _rmApiClient.getCharacterList();
+  Future<List<Character>> getCharacters({required int page}) async {
+    final offset = (page - 1) * 20;
+    final CharacterListDto =
+        await _rmApiClient.getCharacterList(offset: offset);
     final characters = <Character>[];
     for (final characterListResult in CharacterListDto.results!) {
       final characterDto = await _rmApiClient.getCharacter(

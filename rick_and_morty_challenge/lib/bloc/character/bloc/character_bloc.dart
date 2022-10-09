@@ -25,7 +25,7 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
   ) async {
     emit(state.copyWith(status: CharacterStatus.loading));
     try {
-      final characters = await _characterRepository.getCharacters();
+      final characters = await _characterRepository.getCharacters(page: 1);
       emit(state.copyWith(
           status: CharacterStatus.success, character: characters));
     } on Exception {
