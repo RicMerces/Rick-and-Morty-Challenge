@@ -8,6 +8,10 @@ void main() async {
   final rickAndMortyApiClient = RickAndMortyApiClient(http.Client());
   final characterRepository = CharacterRepository(rickAndMortyApiClient);
 
+  final characterDto = await rickAndMortyApiClient.getCharacter(numero: 302);
+
+  print(characterDto.name);
+
   runApp(
     MaterialApp(
       home: MyApp(characterRepository: characterRepository),

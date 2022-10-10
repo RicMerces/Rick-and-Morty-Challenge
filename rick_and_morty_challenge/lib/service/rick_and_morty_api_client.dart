@@ -19,6 +19,7 @@ class RickAndMortyApiClient {
     final characterListUri = Uri.https(
       _baseUrl,
       _basePath,
+      {'page': '?=$offset'},
     );
     final characterListResponse = await _httpClient.get(characterListUri);
 
