@@ -10,7 +10,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int pagina = 0;
     return BlocBuilder<CharacterBloc, CharacterState>(
       builder: (context, state) {
         switch (state.status) {
@@ -32,16 +31,25 @@ class HomePage extends StatelessWidget {
                 centerTitle: true,
                 elevation: 0,
               ),
-              body: ListView.builder(
-                itemBuilder: (context, index) {
-                  pagina = index;
-                  return CharacterContainer(
-                    character: state.characters[index],
-                  );
+              body: NotificationListener<ScrollNotification>(
+                onNotification: (notification) {
+                  if (notification.metrics.maxScrollExtent ==
+                          notification.metrics.pixels &&
+                      state.status != CharacterStatus.loading &&
+                      state.status != CharacterStatus.failure) {
+                    return true;
+                  }
+                  return false;
                 },
-                itemCount: pagina % 20 == 0
-                    ? state.characters.length + 20
-                    : state.characters.length,
+                child: ListView.builder(
+                  // shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return CharacterContainer(
+                      character: state.characters[index],
+                    );
+                  },
+                  itemCount: state.characters.length,
+                ),
               ),
             );
 

@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:rick_and_morty_challenge/models/dto/character_dto.dart';
-import 'package:rick_and_morty_challenge/models/dto/character_list_dto.dart';
 
 class CharacterListRequestFailure implements Exception {}
 
@@ -15,30 +14,28 @@ class RickAndMortyApiClient {
   const RickAndMortyApiClient(this._httpClient);
   final http.Client _httpClient;
 
-  Future<CharacterListDto> getCharacterList({required int offset}) async {
+  Future<ResultDto> getCharacterList({required int offset}) async {
     final characterListUri = Uri.https(
       _baseUrl,
       _basePath,
-      {'page': '?=$offset'},
+      {'page': '/?page=$offset'},
     );
     final characterListResponse = await _httpClient.get(characterListUri);
 
     if (characterListResponse.statusCode == 200 &&
         characterListResponse.body.isNotEmpty) {
-      return CharacterListDto.fromJson(jsonDecode(characterListResponse.body));
+      return ResultDto.fromJson(jsonDecode(characterListResponse.body));
     }
     throw CharacterListRequestFailure();
   }
 
-  Future<CharacterDto> getCharacter({required int numero}) async {
-    // {'offset': offset.toString()}
-
+  Future<Character> getCharacter({required int numero}) async {
     final characterUri = Uri.https(_baseUrl, '$_basePath/$numero');
     final characterResponse = await _httpClient.get(characterUri);
 
     if (characterResponse.statusCode == 200 &&
         characterResponse.body.isNotEmpty) {
-      return CharacterDto.fromJson(jsonDecode(characterResponse.body));
+      return Character.fromJson(jsonDecode(characterResponse.body));
     }
     throw CharacterRequestFailure();
   }

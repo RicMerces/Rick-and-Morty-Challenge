@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_challenge/models/domain/character_domain.dart';
+import 'package:rick_and_morty_challenge/models/dto/character_dto.dart';
 
 class CharacterContainer extends StatelessWidget {
   const CharacterContainer({
