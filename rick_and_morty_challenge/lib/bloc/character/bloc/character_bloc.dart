@@ -37,11 +37,11 @@ class CharacterBloc extends Bloc<CharacterEvent, CharacterState> {
         state.copyWith(
             status: CharacterStatus.success, character: characters.character),
       );
-
       page++;
-      if (event is AddCharacter) {}
     } on Exception {
-      emit(state.copyWith(status: CharacterStatus.failure));
+      emit(
+        state.copyWith(status: CharacterStatus.failure),
+      );
     }
   }
 }

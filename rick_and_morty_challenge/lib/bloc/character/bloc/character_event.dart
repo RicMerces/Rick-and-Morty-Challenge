@@ -6,6 +6,6 @@ class CharacterLoaded extends CharacterEvent {}
 
 class AddPagina extends CharacterEvent {
   List<ResultDto> lista;
-
-  AddPagina({required this.lista});
+  int pagina;
+  AddPagina({required this.lista, required this.pagina});
 }

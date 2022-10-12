@@ -4,6 +4,8 @@ import 'package:rick_and_morty_challenge/bloc/character/bloc/character_bloc.dart
 import 'package:rick_and_morty_challenge/repositories/character_repositoy.dart';
 import 'package:rick_and_morty_challenge/screens/home_page.dart';
 
+import '../bloc/character/bloc/character_event.dart';
+
 class FirstPage extends StatelessWidget {
   const FirstPage({
     Key? key,

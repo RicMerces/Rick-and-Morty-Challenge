@@ -37,6 +37,12 @@ class HomePage extends StatelessWidget {
                           notification.metrics.pixels &&
                       state.status != CharacterStatus.loading &&
                       state.status != CharacterStatus.failure) {
+                    ListView.builder(itemBuilder: (context, index) {
+                      return CharacterContainer(
+                        character: state.characters[index += 20],
+                      );
+                    });
+
                     return true;
                   }
                   return false;
