@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rick_and_morty_challenge/app/core/assets/colorsasset.dart';
 import 'package:rick_and_morty_challenge/app/core/assets/pngassets.dart';
+import 'package:rick_and_morty_challenge/app/core/assets/svgassets.dart';
 
 class OpeningScreen extends StatelessWidget {
   const OpeningScreen({Key? key}) : super(key: key);
@@ -15,7 +17,13 @@ class OpeningScreen extends StatelessWidget {
           Center(
             child: Column(
               children: [
-                Image.asset(PngAssets.pickleRick),
+                SvgPicture.asset(
+                  SvgAssets.pickleRick,
+                  color: ColorsAsset.principalLemonGreen,
+                  height: 300,
+                ),
+
+                // Image.asset(PngAssets.pickleRick),
                 Image.asset(PngAssets.textLogo),
                 const SizedBox(
                   height: 30,
