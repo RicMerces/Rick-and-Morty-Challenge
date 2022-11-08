@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rick_and_morty_challenge/app/modules/screens/opening_screen/opening_screen.dart';
+import 'package:rick_and_morty_challenge/screens/opening_screen/opening_screen.dart';
 
 void main() {
   runApp(
