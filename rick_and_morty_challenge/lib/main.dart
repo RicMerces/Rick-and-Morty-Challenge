@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rick_and_morty_challenge/app/modules/screens/opening_screen/opening_screen.dart';
 
 void main() {
   runApp(
@@ -11,6 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: OpeningScreen(),
+    );
   }
 }
