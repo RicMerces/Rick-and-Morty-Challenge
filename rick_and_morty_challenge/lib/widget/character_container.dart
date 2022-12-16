@@ -32,7 +32,10 @@ class CharacterContainer extends StatelessWidget {
           Text(
             character.name.toString(),
             style: const TextStyle(
-                fontSize: 16, color: Colors.white, fontWeight: FontWeight.w900),
+              fontSize: 16,
+              color: Colors.white,
+              fontWeight: FontWeight.w900,
+            ),
           ),
           Text(
             character.species.toString(),
